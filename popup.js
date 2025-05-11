@@ -17,3 +17,11 @@ document.getElementById("checkBtn").addEventListener("click", async () => {
     });
   });
   
+//   check chrom is define
+if (typeof chrome !== "undefined" && chrome.storage) {
+    chrome.storage.local.set({ targetDomain: domain }, () => {
+      chrome.tabs.create({ url: searchUrl });
+    });
+  } else {
+    console.error("Chrome extension context not available.");
+  }
